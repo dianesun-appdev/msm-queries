@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get("/actors", { :controller => "application", :action => "table_actors"})
   get("/movies", { :controller => "application", :action => "table_movies" })
+  get("/movies/:movie_id", { :controller => "application", :action => "movie_details" })
   
 
 end

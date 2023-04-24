@@ -12,11 +12,12 @@ class ApplicationController < ActionController::Base
     render({:template => "director_templates/youngest"})
   end 
 
-  #def oldest_director
-  #end 
+  def oldest_director
+    @oldest_director = Director.all.order({:dob => :asc}).where.not({:dob => nil})[0]
+    render({:template => "director_templates/oldest"})
+  end 
 
   def director_details
-    selected_id = 1
     selected_id = params[:director_id]
 
     @selected_director = Director.all.where({:id => selected_id })[0]
@@ -24,11 +25,22 @@ class ApplicationController < ActionController::Base
     render({:template => "director_templates/details_directors"})
   end
 
+  def table_movies
+    render({ :template => "movie_templates/table_movies"})
+  end
+
+  def movie_details
+
+    selected_id = params[:movie_id]
+
+    @selected_movie = Movie.all.where({:id => selected_id })[0]
+    
+    render({:template => "movie_templates/movie_details"})
+  
+  end
+
   # def table_actors
   # end
   
-  # def table_movies
-  # end
-
   
 end
