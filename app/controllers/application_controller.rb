@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def director_details
     @selected_director = Director.all.where({:id => params[:director_id]})[0]
-    @filmography =  Movie.all.where({:director_id => params[:director_id].to_i})[0]
+    @filmography =  Movie.all.where({:director_id => params[:director_id].to_i})
     render({:template => "director_templates/details_directors"})
   end
 
