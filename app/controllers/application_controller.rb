@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
     render({ :template => "director_templates/table_directors"})
   end
 
+  def director_details
+    @selected_director = Director.all.where({:id => params[:director_id]})[0]
+    @filmography =  Movie.all.where({:director_id => params[:director_id].to_i})[0]
+    render({:template => "director_templates/details_directors"})
+  end
+
   # def youngest_director
   # end 
 

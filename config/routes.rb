@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get("/", { :controller => "application", :action => "homepage" })
 
   get("/directors", { :controller => "application", :action => "table_directors" })
+  get("/directors/:director_id", { :controller => "application", :action => "director_details" })
+  
   get("/directors/youngest", { :controller => "application", :action => "youngest_director" })
   get("/directors/eldest", { :controller => "application", :action => "oldest_director" })
   

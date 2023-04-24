@@ -6,6 +6,8 @@
     <th>Name</th>
     <th>Image</th>
     <th>Dob</th>
+    <th></th>
+
   </tr>
 
   <% Director.all.each do |director| %>
@@ -15,6 +17,7 @@
     <td> <%= director.name %> </td>
     <td> <img src= <%= director.image %>> </td>
     <td> <%= director.dob %> </td>
+    <td> <a href = "directors/<%=director.id%>"> Show details </a></td>
   </tr>
 
   <% end %>
