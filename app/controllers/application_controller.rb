@@ -39,8 +39,10 @@ class ApplicationController < ActionController::Base
   
   end
 
-  # def table_actors
-  # end
+  def table_actors
+    render({:template => "actor_templates/table_actors"})
+
+  end
   
   
 end
