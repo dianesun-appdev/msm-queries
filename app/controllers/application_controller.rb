@@ -30,19 +30,26 @@ class ApplicationController < ActionController::Base
   end
 
   def movie_details
-
     selected_id = params[:movie_id]
-
     @selected_movie = Movie.all.where({:id => selected_id })[0]
-    
     render({:template => "movie_templates/movie_details"})
   
   end
 
   def table_actors
     render({:template => "actor_templates/table_actors"})
-
   end
   
+  def actor_details
+    actor_id = params[:actor_id].to_i
+    @selected_actor = Actor.where({:id => actor_id })[0]
+    @chars_played = Character.where({:actor_id => actor_id})
+
+    @movie_ids = @chars_played.map_relation_to_array(:movie_id)
+    @movies_starred_in = Movie.where({:id => @movie_ids }).distinct 
+
+    render({:template => "actor_templates/actor_details"})
+  end
+
   
 end
